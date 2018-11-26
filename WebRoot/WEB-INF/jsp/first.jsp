@@ -25,7 +25,6 @@
 					content : createFrame(src)//ifram内容
 				}
 			});
-
 	};
 	var _menus;
 	$(function() {//预加载方法
@@ -45,7 +44,6 @@
 
 		//tabClose();
 		//tabCloseEven();
-
 		$('#tabs').tabs('add', {
 			title : '欢迎使用',
 			content : createFrame('${baseurl}welcome.jsp')
@@ -83,6 +81,15 @@
 </HEAD>
 
 <BODY style="overflow-y: hidden;" class="easyui-layout" scroll="no" >
+<%
+	if(session.getAttribute("activeUser")!=null){
+%>
+	    	<p >session不为空</p>
+	
+	<%	}else{ %>
+	<p >session为空</p>
+	<% }%>
+	
 	<DIV
 		style='background: url("images/layout-browser-hd-bg.gif") repeat-x center 50% rgb(127, 153, 190); height: 30px; color: rgb(255, 255, 255); line-height: 20px; overflow: hidden; font-family: Verdana, 微软雅黑, 黑体;'
 		border="false" split="true" region="north">
@@ -104,6 +111,7 @@
 
 		<DIV class="footer">
 			系统版本号：${version_number}&nbsp;&nbsp;&nbsp;发布日期：${version_date}
+			
 		</DIV>
 	</DIV>
 
@@ -113,6 +121,7 @@
 		<DIV id="nav" class="easyui-accordion" border="false" fit="true">
 			
 			<c:if test="${activeUser.menus!=null }">
+				
 				<ul>
 				<c:forEach items="${activeUser.menus }" var="menu">
 					<li><div>

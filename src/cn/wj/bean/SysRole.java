@@ -1,20 +1,10 @@
 package cn.wj.bean;
 
-/**
- * 
- * 
- * @author wcyong
- * 
- * @date 2018-11-24
- */
 public class SysRole {
     private String id;
 
     private String name;
 
-    /**
-     * 是否可用,1：可用，0不可用
-     */
     private String available;
 
     public String getId() {

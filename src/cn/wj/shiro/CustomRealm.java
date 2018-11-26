@@ -1,13 +1,15 @@
 package cn.wj.shiro;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authz.AuthorizationInfo;
-import org.apache.shiro.crypto.hash.Md5Hash;
+import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.ByteSource;
@@ -85,12 +87,40 @@ public class CustomRealm extends AuthorizingRealm{
 
 		return simpleAuthenticationInfo;
 	}
+	//用于授权
 	@Override
-	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection arg0) {
-		// TODO Auto-generated method stub
-		System.out.println("---------------------------------------------------------------------------------");
-		return null;
+	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
+		//从principals中获取身份信息
+		//将getPrimaryPrincipal方法返回值转为真实身份类型（在上边的doGetAuthenticationInfo认证通过填充到SimpleAuthenticationInfo中身份类型），
+		ActiveUser activeUser=(ActiveUser) principals.getPrimaryPrincipal();
+		//断句身份信息获取权限信息
+		//从数据库获取到权限数据
+		List<SysPermission> permissionList=null;
+		try {
+			permissionList=
+					sysService.findPermissionListByUserId(activeUser.getUserid());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//单独定义一个集合对象，存储权限标签
+		List<String> permissions=new ArrayList<String>();
+		if(permissionList!=null){
+			for (SysPermission syspermission : permissionList) {
+				permissions.add(syspermission.getPercode());
+			}
+		}
+		//查询到权限数据，返回授权信息
+		SimpleAuthorizationInfo simpleAuthorizationInfo=new SimpleAuthorizationInfo();
+		simpleAuthorizationInfo.addStringPermissions(permissions);
+		return simpleAuthorizationInfo;
+	}
+	//清除缓存
+	public void clearCached() {
+		PrincipalCollection principals = SecurityUtils.getSubject().getPrincipals();
+		super.clearCache(principals);
 	}
 
-
+	
+	
 }

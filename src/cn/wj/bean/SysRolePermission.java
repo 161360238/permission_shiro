@@ -1,23 +1,10 @@
 package cn.wj.bean;
 
-/**
- * 
- * 
- * @author wcyong
- * 
- * @date 2018-11-24
- */
 public class SysRolePermission {
     private String id;
 
-    /**
-     * ½ÇÉ«id
-     */
     private String sysRoleId;
 
-    /**
-     * È¨ÏÞid
-     */
     private String sysPermissionId;
 
     public String getId() {

@@ -24,12 +24,12 @@
 		<!-- 通过unauthorizedUrl指定没有权限操作时跳转页面-->
 		<property name="unauthorizedUrl" value="/refuse.jsp" />
 		<!-- 自定义filter配置 -->
-		<!-- <property name="filters">
+		 <property name="filters">
 			<map>
-				将自定义 的FormAuthenticationFilter注入shiroFilter中
+				<!-- 将自定义 的FormAuthenticationFilter注入shiroFilter中 -->
 				<entry key="authc" value-ref="formAuthenticationFilter" />
 			</map>
-		</property> -->
+		</property> 
 		
 		<!-- 过虑器链定义，从上向下顺序执行，一般将/**放在最下边 -->
 		<property name="filterChainDefinitions">
@@ -98,16 +98,16 @@
 
 <!-- 自定义form认证过虑器 -->
 <!-- 基于Form表单的身份验证过滤器，不配置将也会注册此过虑器，表单中的用户账号、密码及loginurl将采用默认值，建议配置 -->
-	<!-- <bean id="formAuthenticationFilter" 
-	class="cn.itcast.ssm.shiro.CustomFormAuthenticationFilter ">
-		表单中账号的input名称
+	<bean id="formAuthenticationFilter" 
+	class="cn.wj.shiro.CustomFormAuthenticationFilter ">
+		<!-- 表单中账号的input名称 -->
 		<property name="usernameParam" value="username" />
-		表单中密码的input名称
+		<!-- 表单中密码的input名称 -->
 		<property name="passwordParam" value="password" />
-		记住我input的名称
+		<!-- 记住我input的名称 -->
 		<property name="rememberMeParam" value="rememberMe"/>
  </bean>
- -->
+
 <!-- rememberMeManager管理器，写cookie，取出cookie生成用户信息 -->
 	<bean id="rememberMeManager" class="org.apache.shiro.web.mgt.CookieRememberMeManager">
 		<property name="cookie" ref="rememberMeCookie" />

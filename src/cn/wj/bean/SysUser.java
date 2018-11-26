@@ -1,41 +1,16 @@
 package cn.wj.bean;
 
-/**
- * 
- * 
- * @author wcyong
- * 
- * @date 2018-11-24
- */
 public class SysUser {
-    /**
-     * Ö÷¼ü
-     */
     private String id;
 
-    /**
-     * ÕËºÅ
-     */
     private String usercode;
 
-    /**
-     * ĞÕÃû
-     */
     private String username;
 
-    /**
-     * ÃÜÂë
-     */
     private String password;
 
-    /**
-     * ÑÎ
-     */
     private String salt;
 
-    /**
-     * ÕËºÅÊÇ·ñËø¶¨£¬1£ºËø¶¨£¬0Î´Ëø¶¨
-     */
     private String locked;
 
     public String getId() {

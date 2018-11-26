@@ -63,13 +63,6 @@ public class SysUserExample {
         distinct = false;
     }
 
-    /**
-     * 
-     * 
-     * @author wcyong
-     * 
-     * @date 2018-11-24
-     */
     protected abstract static class GeneratedCriteria {
         protected List<Criterion> criteria;
 
@@ -539,13 +532,6 @@ public class SysUserExample {
         }
     }
 
-    /**
-     * 
-     * 
-     * @author wcyong
-     * 
-     * @date 2018-11-24
-     */
     public static class Criterion {
         private String condition;
 

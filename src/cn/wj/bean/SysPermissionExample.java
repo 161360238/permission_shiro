@@ -63,13 +63,6 @@ public class SysPermissionExample {
         distinct = false;
     }
 
-    /**
-     * 
-     * 
-     * @author wcyong
-     * 
-     * @date 2018-11-24
-     */
     protected abstract static class GeneratedCriteria {
         protected List<Criterion> criteria;
 
@@ -729,13 +722,6 @@ public class SysPermissionExample {
         }
     }
 
-    /**
-     * 
-     * 
-     * @author wcyong
-     * 
-     * @date 2018-11-24
-     */
     public static class Criterion {
         private String condition;
 

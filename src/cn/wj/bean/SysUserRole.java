@@ -1,12 +1,5 @@
 package cn.wj.bean;
 
-/**
- * 
- * 
- * @author wcyong
- * 
- * @date 2018-11-24
- */
 public class SysUserRole {
     private String id;
 
